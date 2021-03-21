@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@home');
 Route::get('/register', 'AuthController@register');
 Route::post('/welcome','AuthController@welcome');
+
+Route::get('/', 'HomeController@task');
+Route::get('/dataTable', 'HomeController@data');
