@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionTable extends Migration
+class CreateAnswerCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateQuestionTable extends Migration
      */
     public function up()
     {
-        Schema::create('pertanyaan', function (Blueprint $table) {
+        Schema::create('answercomments', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
             $table->string('isi');
-            $table->timestamp('tanggal_dibuat')->nullable();
-            $table->timestamp('tanggal_diperbaharui')->nullable();
+            $table->unsignedBigInteger('answer_id');
             $table->unsignedBigInteger('profile_id');
         });
 
-        Schema::table('pertanyaan', function (Blueprint $table){
-            $table->foreign('profile_id')->references('id')->on('profile');
+        Schema::table('answercomments', function (Blueprint $table) {
+            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('answer_id')->references('id')->on('answers');
         });
+
     }
 
     /**
@@ -34,6 +34,6 @@ class CreateQuestionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pertanyaan');
+        Schema::dropIfExists('answercomments');
     }
 }

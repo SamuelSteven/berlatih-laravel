@@ -13,9 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@home');
-Route::get('/register', 'AuthController@register');
-Route::post('/welcome','AuthController@welcome');
+// //Task 12
+// Route::get('/', 'HomeController@home');
+// Route::get('/register', 'AuthController@register');
+// Route::post('/welcome','AuthController@welcome');
 
-Route::get('/', 'HomeController@task');
-Route::get('/dataTable', 'HomeController@data');
+// //Task 13
+// Route::get('/', 'HomeController@task');
+// Route::get('/dataTable', 'HomeController@data');
+
+//Task 15
+Route::get('/', 'HomeController@homepage');
+Route::get('/question', 'QuestionController@index');
+Route::get('/question/create', 'QuestionController@create');
+Route::get('/question/{question}', 'QuestionController@show');
+Route::post('/question', 'QuestionController@store');
+Route::delete('/question/{question}', 'QuestionController@destroy');
+Route::get('/question/{question}/edit','QuestionController@edit');
+Route::patch('/question/{question}','QuestionController@update');

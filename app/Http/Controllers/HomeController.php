@@ -17,4 +17,8 @@ class HomeController extends Controller
     public function data(){
         return view('Tugas 13/dataTable');
     }
+
+    public function homepage(){
+        return view('Tugas 15/home');
+    }
 }

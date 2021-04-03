@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignComment extends Migration
+class AddAnswersToQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddForeignComment extends Migration
      */
     public function up()
     {
-        Schema::table('komentar', function (Blueprint $table) {
-            $table->foreign('komentar_id')->references('id')->on('komentar');
+        Schema::table('questions', function (Blueprint $table) {
+            $table->foreign('jawaban_tepat_id')->references('id')->on('answers');
         });
     }
 
@@ -25,7 +25,7 @@ class AddForeignComment extends Migration
      */
     public function down()
     {
-        Schema::table('komentar', function (Blueprint $table) {
+        Schema::table('questions', function (Blueprint $table) {
             //
         });
     }
