@@ -26,8 +26,8 @@
                     </div>
                     <div class="my-3">
                         <label for="id" class="form-label">ID Profile</label>
-                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" placeholder="Masukkan id Profile" name="id" value="{{$question->profile_id}}">
-                        @error('id')
+                        <input type="text" class="form-control @error('profile_id') is-invalid @enderror" id="id" placeholder="Masukkan id Profile" name="profile_id" value="{{$question->profile_id}}">
+                        @error('profile_id')
                             <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>

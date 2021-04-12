@@ -40,14 +40,16 @@ class QuestionController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'id' => 'required'
+            'profile_id' => 'required'
         ]);
         
-        question::create([
-            'judul' => $request->judul,
-            'isi' => $request->isi,
-            'profile_id' => $request->id
-        ]);
+        // question::create([
+        //     'judul' => $request->judul,
+        //     'isi' => $request->isi,
+        //     'profile_id' => $request->id
+        // ]);
+
+        question::create($request->all());
         return redirect('/question')->with('status','Pertanyaan Berhasil Ditambahkan!'); 
     }
 
@@ -85,14 +87,14 @@ class QuestionController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'id' => 'required'
+            'profile_id' => 'required'
         ]);
 
         question::where('id',$question->id)
             ->update([
                 'judul' => $request->judul,
                 'isi' => $request->isi,
-                'profile_id' => $request->id
+                'profile_id' => $request->profile_id
             ]);
         return redirect('/question')->with('status','Pertanyaan Berhasil Diubah!'); 
     }
