@@ -20,7 +20,7 @@ class CreateLikeDislikeQuestions extends Migration
         });
         
         Schema::table('like_dislike_questions', function (Blueprint $table) {
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('profile_id')->references('id')->on('users');
             $table->foreign('pertanyaan_id')->references('id')->on('questions');
         });
 

@@ -21,7 +21,7 @@ class CreateAnswerCommentsTable extends Migration
         });
 
         Schema::table('answercomments', function (Blueprint $table) {
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('profile_id')->references('id')->on('users');
             $table->foreign('answer_id')->references('id')->on('answers');
         });
 

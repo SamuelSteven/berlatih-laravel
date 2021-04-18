@@ -20,7 +20,7 @@ class CreateLikeDislikeAnswersTable extends Migration
         });
 
         Schema::table('like_dislike_answers', function (Blueprint $table) {
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('profile_id')->references('id')->on('users');
             $table->foreign('answer_id')->references('id')->on('answers');
         });
 

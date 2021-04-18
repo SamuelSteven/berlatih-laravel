@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\question;
-use App\profile;
+use App\User;
+use App\answer;
+use App\tag;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class QuestionController extends Controller
 {
@@ -40,7 +43,6 @@ class QuestionController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'profile_id' => 'required'
         ]);
         
         // question::create([
@@ -61,7 +63,11 @@ class QuestionController extends Controller
      */
     public function show(question $question)
     {
-        return view('Tugas 15.show', compact('question'));
+        $answer = answer::where('question_id','=',$question->id)->get();
+        $answer_count = $answer->count();
+        $tag = tag::where('question_id','=',$question->id)->get();
+        $tag_count = $tag->count();
+        return view('Tugas 15.show', compact('question', 'answer', 'answer_count', 'tag', 'tag_count'));
     }
 
     /**
@@ -72,7 +78,9 @@ class QuestionController extends Controller
      */
     public function edit(question $question)
     {
-        return view('Tugas 15.edit', compact('question'));
+        $tag = tag::where('question_id','=',$question->id)->get();
+        $tag_count = $tag->count();
+        return view('Tugas 15.edit', compact('question','tag', 'tag_count'));
     }
 
     /**
@@ -87,7 +95,6 @@ class QuestionController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'profile_id' => 'required'
         ]);
 
         question::where('id',$question->id)
@@ -96,7 +103,11 @@ class QuestionController extends Controller
                 'isi' => $request->isi,
                 'profile_id' => $request->profile_id
             ]);
-        return redirect('/question')->with('status','Pertanyaan Berhasil Diubah!'); 
+        // tag::where('question_id', $question->id)
+        //     ->update([
+        //         'tag_title' => $request->judul
+        //     ]);
+        return redirect('/question')->with('status','Question Edited Successfully!'); 
     }
 
     /**
@@ -108,6 +119,6 @@ class QuestionController extends Controller
     public function destroy(question $question)
     {
         question::destroy($question->id);
-        return redirect('/question')->with('status','Pertanyaan Berhasil Dihapus!'); 
+        return redirect('/question')->with('status','Question Deleted Successfully!'); 
     }
 }

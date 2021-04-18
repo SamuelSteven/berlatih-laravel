@@ -23,7 +23,7 @@ class CreateQuestionsTable extends Migration
         });
 
         Schema::table('questions', function (Blueprint $table) {
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('profile_id')->references('id')->on('users');
             // $table->foreign('jawaban_tepat_id')->references('id')->on('answers');
         });
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnswersTable extends Migration
+class AddForeignToTags extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,10 @@ class CreateAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
-            $table->id();
-            $table->string('isi');
-            $table->timestamps();
-            $table->unsignedBigInteger('profile_id');
+        Schema::table('tags', function (Blueprint $table) {
             $table->unsignedBigInteger('question_id');
-        });
-
-        Schema::table('answers', function (Blueprint $table) {
-            $table->foreign('profile_id')->references('id')->on('users');
             $table->foreign('question_id')->references('id')->on('questions');
         });
-
     }
 
     /**
@@ -35,6 +26,8 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::table('tags', function (Blueprint $table) {
+
+        });
     }
 }

@@ -1,4 +1,4 @@
-@extends('Tugas 15.template')
+@extends('layouts.app')
 
 @section('title','Forum')
 
@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h1 class="mt-3"> Daftar Pertanyaan</h1>
-                <a href="/question/create" class="btn btn-primary my-4">Tambah Pertanyaan Baru</a> 
+                <h1 class="mt-3"> Question List</h1>
+                <a href="/question/create" class="btn btn-primary my-4">Add New Question</a> 
                 @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}

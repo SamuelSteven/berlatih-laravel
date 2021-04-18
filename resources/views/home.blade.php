@@ -1,27 +1,23 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-    </head>
-    <body>
-        <h1>BNCCBook</h1>
-        <h2>Social Media Komunitas Komputer Binus Bandung</h2>
-        <p>Belajar dan Berbagi dengan sesama</p>
-        <h2>Benefit Join di BNCCBook</h2>
-        <ul>
-            <li>Mendapatkan motivasi dari sesama tech enthusiast</li>
-            <li>Sharing knowledge dari para pengajar</li>
-            <li>Dibuat oleh calon web developer terbaik</li>
-        </ul>
-        <h2>Cara Bergabung ke BNCCBook</h2>
-        <ol>
-            <li>Mengunjungi website ini</li>
-            <li>Mendaftar di <a href="{{ url('/register')}}">Form Sign Up</a></li>
-            <li>Selesai</li>
-        </ol>
-    </body>
-</html>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

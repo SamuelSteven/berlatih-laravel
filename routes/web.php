@@ -23,14 +23,30 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/dataTable', 'HomeController@data');
 
 //Task 15
-Route::get('/', 'HomeController@homepage');
-// Route::get('/question', 'QuestionController@index');
-// Route::get('/question/create', 'QuestionController@create');
-// Route::get('/question/{question}', 'QuestionController@show');
-// Route::post('/question', 'QuestionController@store');
-// Route::delete('/question/{question}', 'QuestionController@destroy');
-// Route::get('/question/{question}/edit','QuestionController@edit');
-// Route::patch('/question/{question}','QuestionController@update');
+
 
 //Task 16
-Route::resource('question', 'QuestionController');
+// Route::resource('question', 'QuestionController');
+Auth::routes();
+
+Route::middleware(['auth'])->group(function (){
+    // Home
+    Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    //Question
+    Route::get('/question', 'QuestionController@index');
+    Route::get('/question/create', 'QuestionController@create');
+    Route::get('/question/{question}', 'QuestionController@show');
+    Route::post('/question', 'QuestionController@store');
+    Route::delete('/question/{question}', 'QuestionController@destroy');
+    Route::get('/question/{question}/edit','QuestionController@edit');
+    Route::patch('/question/{question}','QuestionController@update');
+
+    //Answer
+    Route::post('/answer', 'AnswerController@store');
+    Route::delete('/answer/{answer}', 'AnswerController@destroy');
+    Route::patch('/answer/{answer}','AnswerController@update');
+});
+
+

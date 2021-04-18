@@ -22,7 +22,7 @@ class CreateQuestionCommentsTable extends Migration
         });
 
         Schema::table('questioncomments', function (Blueprint $table) {
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('profile_id')->references('id')->on('users');
             $table->foreign('question_id')->references('id')->on('questions');
         });
     }
