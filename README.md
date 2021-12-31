@@ -1,3 +1,7 @@
+# Berlatih Laravel
+This is my practice when i take fullstack webmaster class. In this class, I learned about basic laravel, MVC, composer, routing, controller, blade templates, laravel database & migration, laravel CRUD with query builder and ORM, eloquent relationships, and laravel Auth Middleware. This exercise was very useful in helping me work on my final fullstack webmaster project.
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
@@ -76,4 +80,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# berlatih-laravel
+
